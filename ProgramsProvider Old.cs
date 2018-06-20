@@ -105,7 +105,7 @@ namespace Microsoft.PackageManagement.Providers.Internal
 
 
         // GetInstalledPackages - Returns the packages that are installed
-        // Name - the package name to match. Empty or null means match everything</param>
+        // Name - the package name to match. Empty or null means match everything
 
         public void GetInstalledPackages(string name, string requiredVersion, string minimumVersion, string maximumVersion, Request request)
         {
