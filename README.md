@@ -6,5 +6,6 @@ Install Check Module
 
 # ProgramsProvider_Test.cs
 * Started the simplification process
-* We need to use BinarySearch instead of a Linear Search method.
+* We need to use BinarySearch instead of a Linear Search method to simplify the process of finding features.
+* Need to create a featureNode.cs to contain individual features.
 * Both the YieldPackages and GetInstalledPackages need to be scraped and rewritten.
