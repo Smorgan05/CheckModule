@@ -1,6 +1,9 @@
 # CheckModule
 Install Check Module
 
+# PackageManagement_Rewrite Diagrams
+* Draft Plan to rewrite the Programs Core Provider
+
 # ProgramsProvider_Old.cs
 * Simplified Code Commenting and added explanation on Logic for YieldPackages
 
