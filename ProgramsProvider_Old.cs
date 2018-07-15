@@ -124,6 +124,7 @@ namespace Microsoft.PackageManagement.Providers.Internal
                 {
                     if (!YieldPackages("hklm64", hklm64, name, requiredVersion, minimumVersion, maximumVersion, request))
                     {
+                        // If the regkey exists (!True)
                         return;
                     }
                 }
@@ -132,6 +133,7 @@ namespace Microsoft.PackageManagement.Providers.Internal
                 {
                     if (!YieldPackages("hkcu64", hkcu64, name, requiredVersion, minimumVersion, maximumVersion, request))
                     {
+                        // If the regkey exists (!True)
                         return;
                     }
                 }
@@ -141,6 +143,7 @@ namespace Microsoft.PackageManagement.Providers.Internal
             {
                 if (!YieldPackages("hklm32", hklm32, name, requiredVersion, minimumVersion, maximumVersion, request))
                 {
+                    // If the regkey exists (!True)
                     return;
                 }
             }
@@ -149,6 +152,7 @@ namespace Microsoft.PackageManagement.Providers.Internal
             {
                 if (!YieldPackages("hkcu32", hkcu32, name, requiredVersion, minimumVersion, maximumVersion, request))
                 {
+                    // Displosable am not sure if this returns anything
                 }
             }
         }
@@ -200,8 +204,7 @@ namespace Microsoft.PackageManagement.Providers.Internal
                             var publisher = properties.Get("Publisher") ?? "";
                             var uninstallString = properties.Get("QuietUninstallString") ?? properties.Get("UninstallString") ?? "";
                             var comments = properties.Get("Comments") ?? "";
-
-                            var fp = hive + @"\" + subkey;
+                            var FullPath = hive + @"\" + subkey;
 
                             if (!string.IsNullOrEmpty(requiredVersion))
                             {
@@ -222,7 +225,7 @@ namespace Microsoft.PackageManagement.Providers.Internal
                                 }
                             }
 
-                            if (request.YieldSoftwareIdentity(fp, productName, productVersion, "unknown", comments, "", name, "", "") != null)
+                            if (request.YieldSoftwareIdentity(FullPath, productName, productVersion, "unknown", comments, "", name, "", "") != null)
                             {
                                 if (properties.Keys.Where(each => !string.IsNullOrWhiteSpace(each)).Any(k => request.AddMetadata(fp, k.MakeSafeFileName(), properties[k]) == null))
                                 {
@@ -233,6 +236,7 @@ namespace Microsoft.PackageManagement.Providers.Internal
                     }
                 }
             }
+            // If RegKey is null then return Nothing
             return true;
         }
     }

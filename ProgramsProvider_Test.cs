@@ -194,7 +194,8 @@ namespace Microsoft.PackageManagement.Providers.Internal
                         */
 
                         var productName = properties.Get("DisplayName");
-                        var productVersion = properties.Get("DisplayVersion") ?? "";
+                       // var productVersion = properties.Get("DisplayVersion") ?? "";
+                        var productVersion = properties.Get("DisplayVersion") ?? VerFinder();
                         var publisher = properties.Get("Publisher") ?? "";
                         var comments = properties.Get("Comments") ?? "";
                         var FullPath = hive + @"\" + subkey;
